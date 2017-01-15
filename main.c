@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 18:14:48 by kmurray           #+#    #+#             */
-/*   Updated: 2017/01/10 13:53:30 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/01/14 16:34:06 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,34 @@ int main(int ac, char **av)
 	{
 		int	gnl;
 		char *line;
-		int fd;
-		static int p = 0;
+		int tab[ac];
+//		static int p = 0;
+		int i = 0;
+		int n = 1;
 
-		fd = open(av[1], O_RDONLY);
-		while ((gnl = get_next_line(fd, &line)) > 0)
+		while (i < ac)
 		{
-			ft_putnbr(++p);
-			printf("%s\n", line);
-			//printf("%d = gnl, %s was this line\n", gnl, line[0]);
-		
+			tab[i] = open(av[i + 1], O_RDONLY);
+			++i;
 		}
-		close(fd);
+		i = 0;
+		while (n > 0)
+		{
+			n = 0;
+			while (i < ac)
+			{
+				if ((gnl = get_next_line(tab[i], &line)) > 0)
+				{
+					printf("%d\t", tab[i]);
+					printf("%s\n", line);
+					++n;
+				}
+				++i;
+			}
+			i = 0;
+		}
+		while (i < ac)
+			close(tab[i++]);	
 	}
 	return (0);
 }

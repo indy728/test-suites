@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 13:08:00 by kmurray           #+#    #+#             */
-/*   Updated: 2017/01/10 13:52:12 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/01/14 16:24:05 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define BUFF_SIZE 5
+# define BUFF_SIZE 10
 
 typedef struct			s_fd_list
 {
