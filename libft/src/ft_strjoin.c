@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/30 19:57:20 by kmurray           #+#    #+#             */
-/*   Updated: 2017/01/12 14:09:06 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/01/14 16:54:51 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ static	void	get_lengths(char *s1, char *s2, size_t *len1, size_t *len2)
 	else
 		*len2 = ft_strlen(s2);
 }
-
-
 
 char			*ft_strjoin(char const *s1, char const *s2)
 {
@@ -48,11 +46,7 @@ char			*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	while (s2[j])
-	{
-		join[i] = s2[j];
-		i++;
-		j++;
-	}
+		join[i++] = s2[j++];
 	join[i] = '\0';
 	return (join);
 }

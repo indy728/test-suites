@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 18:21:17 by kmurray           #+#    #+#             */
-/*   Updated: 2017/01/14 16:46:12 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/01/14 23:45:43 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,11 @@ int			check_fd_list(int fd, char **line, t_fd_list **begin_list)
 	return (0);
 }
 
-int			read_file(int fd, char **line, t_fd_list **begin_list)
+int			read_file(int fd, char **line, t_fd_list **begin_list, char *buf)
 {
 	int		bytes_read;
-	char	buf[BUFF_SIZE + 1];
 	int		i;
 
-	ft_bzero(buf, BUFF_SIZE + 1);
 	while ((bytes_read = read(fd, buf, BUFF_SIZE)))
 	{
 		i = 0;
@@ -98,6 +96,9 @@ int			read_file(int fd, char **line, t_fd_list **begin_list)
 			++i;
 		}
 		*line = ft_strjoin(*line, buf);
+		ft_bzero(buf, BUFF_SIZE + 1);
+		if (i < BUFF_SIZE - 1)
+			return (1);
 	}
 	return (0);
 }
@@ -105,18 +106,20 @@ int			read_file(int fd, char **line, t_fd_list **begin_list)
 int			get_next_line(const int fd, char **line)
 {
 	static t_fd_list	*begin_list = NULL;
+	char				buf[BUFF_SIZE + 1];
 
-	if (*line != NULL)
-		free(*line);
-	*line = NULL;
-	if (begin_list != NULL)
+	ft_bzero(buf, BUFF_SIZE + 1);
+	if (fd < 0)
+		return (-1);
+	*line = (char *)malloc(BUFF_SIZE + 1);
+	if (begin_list)
 	{
 		if (check_fd_list(fd, line, &begin_list))
 			return (1);
 	}
-	if (read_file(fd, line, &begin_list) > 0)
+	if (read_file(fd, line, &begin_list, buf) > 0)
 		return (1);
-	else if (read_file(fd, line, &begin_list) < 0)
+	else if (read_file(fd, line, &begin_list, buf) < 0)
 		return (-1);
 	return (0);
 }

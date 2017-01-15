@@ -6,11 +6,11 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 13:08:00 by kmurray           #+#    #+#             */
-/*   Updated: 2017/01/14 16:24:05 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/01/14 23:22:11 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
 # include "./libft/includes/libft.h"
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define BUFF_SIZE 10
+# define BUFF_SIZE 20
 
 typedef struct			s_fd_list
 {
