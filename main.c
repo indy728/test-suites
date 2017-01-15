@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 18:14:48 by kmurray           #+#    #+#             */
-/*   Updated: 2017/01/14 19:08:08 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/01/15 12:06:45 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main(int ac, char **av)
 			{
 				if ((gnl = get_next_line(tab[i], &line)) > 0)
 				{
-					printf("%d\t", tab[i]);
+					printf("%d,%d\t", gnl, tab[i]);
 					printf("%s\n", line);
 					++n;
 				}
@@ -47,6 +47,7 @@ int main(int ac, char **av)
 			}
 			i = 0;
 		}
+		printf("%d\n", gnl);
 		while (i < ac)
 			close(tab[i++]);	
 	}
