@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 18:21:17 by kmurray           #+#    #+#             */
-/*   Updated: 2017/01/15 12:12:17 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/01/15 12:30:56 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int			read_file(int fd, char **line, t_fd_list **begin_list, char *buf)
 		}
 		*line = ft_strjoin(*line, buf);
 		ft_bzero(buf, BUFF_SIZE + 1);
-		if (i < BUFF_SIZE)
+		if (bytes_read < BUFF_SIZE)
 			return (1);
 	}
 	return (0);
