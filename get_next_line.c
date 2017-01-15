@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 18:21:17 by kmurray           #+#    #+#             */
-/*   Updated: 2017/01/14 23:45:43 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/01/15 12:01:23 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int			read_file(int fd, char **line, t_fd_list **begin_list, char *buf)
 		}
 		*line = ft_strjoin(*line, buf);
 		ft_bzero(buf, BUFF_SIZE + 1);
-		if (i < BUFF_SIZE - 1)
+		if (i < BUFF_SIZE)
 			return (1);
 	}
 	return (0);
@@ -112,6 +112,7 @@ int			get_next_line(const int fd, char **line)
 	if (fd < 0)
 		return (-1);
 	*line = (char *)malloc(BUFF_SIZE + 1);
+	ft_bzero(*line, BUFF_SIZE + 1);
 	if (begin_list)
 	{
 		if (check_fd_list(fd, line, &begin_list))
